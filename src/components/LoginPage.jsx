@@ -14,7 +14,7 @@ const LoginPage = () => {
     e.preventDefault();
     const isLoggedIn = login(email, password);
     if (isLoggedIn) {
-      navigate("/");
+      navigate("/dashboard");
     } else {
       setError("Invalid credentials");
     }

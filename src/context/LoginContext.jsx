@@ -8,11 +8,11 @@ export function LoginProvider({ children }) {
   const login = (email, password) => {
   
     const users = [
-      { id: 1, email: "kezahannifa@gmail.com", password: "keza123", username: "Keza Hannifa" },
-      { id: 2, email: "belyseing@gmail.com", password: "Belyse123", username: "Belyse Ingabire" },
-      { id: 3, email: "tetairis@gmail.com", password: "credot123", username: "Credot Iris" },
+      { id: 1, email: "kezahannifa@gmail.com", password: "keza123"},
+      { id: 2, email: "mporeigor@gmail.com", password: "mpore123" },
+      { id: 3, email: "tetairis@gmail.com", password: "credot123"},
     ];
-    const user = users.find((u) => u.email === email && u.password === password);
+    const user = users.find((user) => user.email === email && user.password === password);
     if (user) {
       setLoginUser(user);
       return true;

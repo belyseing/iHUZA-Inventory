@@ -12,8 +12,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<DashboardLayout />}>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} /> 
           <Route path="users" element={<UserList />} />
           <Route path="products" element={<Products />} />

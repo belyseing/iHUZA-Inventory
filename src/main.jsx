@@ -6,9 +6,11 @@ import './index.css'
 import { UserProvider } from './context/UserContext.jsx';  
 import { LoginProvider } from './context/LoginContext.jsx';
 import { ProductProvider } from './context/ProductContext.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <UserProvider> 
       <LoginProvider>
         <ProductProvider>
@@ -16,5 +18,6 @@ createRoot(document.getElementById('root')).render(
         </ProductProvider>
       </LoginProvider>
     </UserProvider>
+    </ThemeProvider>
   </StrictMode>
 );

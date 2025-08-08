@@ -1,30 +1,33 @@
 import { useUser } from '../hooks/useUser';
 import { FiUser } from "react-icons/fi";
+import { useTheme } from '../context/ThemeContext';
 
 const UserList = () => {
   const { User } = useUser();
+  const {theme} = useTheme ();
 
-  const getRoleClasses = (role) => {
-    switch (role) {
-      case 'admin': 
-        return 'text-purple-600 bg-purple-600/10 rounded-full';
-      case 'manager': 
-        return 'text-blue-800 bg-blue-400/10 rounded-full';
-      case 'staff': 
-        return 'text-black bg-gray-400/20 rounded-full'; 
-      default: 
-        return 'text-gray-500 bg-gray-300/30 rounded-full';
-    }
-  };
+const getRoleClasses = (role) => {
+  switch (role) {
+    case 'admin':
+      return 'text-purple-600 bg-purple-600/10  rounded-full';
+    case 'manager':
+      return 'text-blue-800 bg-blue-400/10  rounded-full ';
+    case 'staff':
+      return 'text-black bg-gray-400/20 rounded-full';
+    default:
+      return 'text-gray-500 bg-gray-300/30  rounded-full';
+  }
+};
+
 
   const getStatusClasses = (status) => {
     return status === 'active' 
-      ? 'text-green-600 bg-green-500/10 rounded-full'
+      ? 'text-green-600 bg-green-500/10 rounded-full '
       : 'text-red-800 bg-red-600/20 rounded-full';
   };
 
   return (
-    <div className="bg-white text-black ml-72 rounded-2xl border border-gray-100 mr-6">
+    <div className={` ml-72 rounded-2xl  mr-6 ${theme === "light"? "bg-white text-black border border-gray-100" : "bg-gray-800"}`}>
       <div>
         <div className='flex justify-between'>
           <h2 className='p-4 font-bold text-xl'>Users</h2>
@@ -32,7 +35,7 @@ const UserList = () => {
         </div>
         <table className='w-full table-wrapper rounded-md'>
           <thead> 
-            <tr className='bg-gray-300/20 text-left text-gray-500 text-sm uppercase'>
+            <tr className={`text-left  text-sm uppercase ${theme === "light" ? "bg-gray-300/20 text-gray-500" : "bg-gray-300/10 text-gray-500"}`}>
               <th className='w-20 p-5 pl-8'>User</th>
               <th className='w-20 pl-2'>Role</th>
               <th className='w-20'>Status</th>
@@ -44,8 +47,8 @@ const UserList = () => {
             {User.map((user, index) => (
               <tr key={index} className="text-left border-b border-gray-600/20">
                 <td className='flex items-center justify-start gap-2 p-3 whitespace-nowrap'>
-                  <div className='size-10 bg-neutral-200 rounded-full flex items-center justify-center'>
-                    < FiUser className="text-gray-600 text-xl" />
+                  <div className= {` size-10  rounded-full flex items-center justify-center ${theme === "light" ? "bg-neutral-200" : "bg-gray-600"}`}>
+                    < FiUser className={`text-xl${theme === "light" ? "text-red-600" : "text-red-900"}`} />
                   </div>
                   <span className='flex flex-col gap-2 items-start'>
                     <h2 className='font-bold capitalize px-2'>{user.username}</h2>
@@ -63,13 +66,13 @@ const UserList = () => {
                   </span>
                 </td>
                 <td className='text-sm font-extralight'>
-                  <span className='text-sm font-light p-2'>{user.lastlogin}</span>
+                  <span className={`text-sm font-light p-2 ${theme === "light" ? "" : "text-gray-400"}`}>{user.lastlogin}</span>
                 </td>
                 <td>
-                  <button className="capitalize mr-3 text-primary-500 text-sm font-bold">
+                  <button className={`capitalize mr-3  text-sm font-bold ${theme === "light"? "text-primary-500" : "text-primary-300"}`}>
                     Edit
                   </button>
-                  <button className="capitalize text-red-600 text-sm font-bold">
+                  <button className={`capitalize mr-3  text-sm font-bold ${theme === "light"? "text-red-600" : "text-red-400"}`}>
                     Delete
                   </button>
                 </td>
